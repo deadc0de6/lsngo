@@ -1,4 +1,4 @@
-module lsngo
+module github.com/deadc0de6/lsngo
 
 go 1.17
 
