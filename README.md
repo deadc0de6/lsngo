@@ -5,16 +5,7 @@
 [![Donate](https://img.shields.io/badge/donate-KoFi-blue.svg)](https://ko-fi.com/deadc0de6)
 
 [lsngo](https://github.com/deadc0de6/lsngo) is a terminal user interface to replace
-the use of repetitive `cd ... ls ...`.
-
-Quick start:
-```bash
-# You need at least **golang 1.17**
-go install -v github.com/deadc0de6/lsngo/lsngo@latest
-lg -h
-```
-
-Or pick a binary from the [latest release](https://github.com/deadc0de6/lsngo/releases).
+the use of repetitive `ls ... cd ...`.
 
 # Build
 
