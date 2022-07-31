@@ -10,13 +10,12 @@ the use of repetitive `ls ... cd ...`.
 
 ![](/resources/screenshot.png?raw=true "lsngo")
 
-Install using go:
-```bash
-# you need golang v1.17
-go install -v github.com/deadc0de6/lsngo/lsngo@latest
-```
+Install by picking up a binary from the [latest release](https://github.com/deadc0de6/checkah/releases) and adding it to your path.
 
-Or pick up a binary from the [latest release](https://github.com/deadc0de6/checkah/releases).
+Then add an alias:
+```bash
+alias lg=lsngo
+```
 
 # Usage
 
