@@ -1,12 +1,30 @@
-# LSNGO
-
 [![Tests Status](https://github.com/deadc0de6/lsngo/workflows/tests/badge.svg)](https://github.com/deadc0de6/lsngo/actions)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 [![Donate](https://img.shields.io/badge/donate-KoFi-blue.svg)](https://ko-fi.com/deadc0de6)
 
+# lsngo
+
 [lsngo](https://github.com/deadc0de6/lsngo) is a terminal user interface to replace
 the use of repetitive `ls ... cd ...`.
+
+![](/resources/screenshot.png?raw=true "lsngo")
+
+# Usage
+
+```bash
+Usage of lg:
+  -a	Show hidden files
+  -debug
+    	Debug mode
+  -editor string
+    	File editor
+  -help
+    	Show this help
+  -l	Long format
+  -version
+    	Show version
+```
 
 # Build
 
@@ -22,12 +40,12 @@ make build-all
 ls lg-*
 ```
 
-# shortcuts
+# Shortcuts
 
-* `j`: down
-* `k`: up
-* `h`: go to parent directory
-* `l`: open file/directory
+* `j`: down (or arrow down)
+* `k`: up (or arrow up)
+* `h`: go to parent directory (or arrow left)
+* `l`: open file/directory (or arrow right)
 * `q`: exit
 * `esc`: exit
 * `H`: toggle hidden files
