@@ -14,6 +14,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/gdamore/tcell/v2"
@@ -28,6 +29,7 @@ const (
 
 var (
 	editorEnv = "EDITOR"
+	shellEnv  = "SHELL"
 	units     = []string{"", "K", "M", "G", "T", "P"}
 
 	help = `
@@ -270,6 +272,23 @@ func (n *nav) editFile(path string) {
 	cmd.Run()
 }
 
+// start a shell in path
+func openShell(path string) {
+	if !isDir(path) {
+		return
+	}
+	os.Chdir(path)
+	shell, err := exec.LookPath(os.Getenv(shellEnv))
+	if err != nil {
+		log.Error(err)
+		return
+	}
+	err = syscall.Exec(shell, []string{shell}, os.Environ())
+	if err != nil {
+		log.Error(err)
+	}
+}
+
 // open a file/dir
 func (n *nav) openPath(base string, sub string) string {
 	p := filepath.Join(base, sub)
@@ -348,6 +367,8 @@ func (n *nav) runApp(path string) {
 	if err != nil {
 		log.Error(err)
 	}
+
+	openShell(path)
 }
 
 // print usage
