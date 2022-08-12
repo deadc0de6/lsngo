@@ -9,7 +9,6 @@ import (
 	"flag"
 	"fmt"
 	"io/fs"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -62,15 +61,19 @@ type nav struct {
 
 // returns files in directory
 func getFiles(path string, showHidden bool) ([]fs.FileInfo, error) {
-	files, err := ioutil.ReadDir(path)
+	entries, err := os.ReadDir(path)
 	if err != nil {
 		return nil, err
 	}
 
 	var infos []fs.FileInfo
-	for _, info := range files {
-		if !showHidden && strings.HasPrefix(info.Name(), ".") {
+	for _, entry := range entries {
+		if !showHidden && strings.HasPrefix(entry.Name(), ".") {
 			continue
+		}
+		info, err := entry.Info()
+		if err != nil {
+			log.Error(err)
 		}
 		infos = append(infos, info)
 	}
