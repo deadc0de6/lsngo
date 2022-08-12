@@ -28,9 +28,10 @@ const (
 )
 
 var (
-	editorEnv = "EDITOR"
-	shellEnv  = "SHELL"
-	units     = []string{"", "K", "M", "G", "T", "P"}
+	editorEnv  = "EDITOR"
+	shellEnv   = "SHELL"
+	colorReset = "[-]"
+	units      = []string{"", "K", "M", "G", "T", "P"}
 
 	help = `
 		j: down
@@ -180,22 +181,22 @@ func (n *nav) fillList(finfos []fs.FileInfo) {
 			line = extendedView(info)
 		}
 
-		mStyle := tcell.StyleDefault
+		preColor := ""
 		if info.IsDir() {
 			// style directory
-			mStyle = tcell.StyleDefault.Foreground(tcell.ColorBlue)
+			preColor = "[blue]"
 		}
 		if info.Mode()&fs.ModeSymlink > 0 {
 			// style symlink
-			mStyle = tcell.StyleDefault.Foreground(tcell.ColorLightCyan)
+			preColor = "[cyan]"
 		}
 		if info.Mode()&fs.ModeSetuid > 0 {
 			// style setuid
-			mStyle = tcell.StyleDefault.Foreground(tcell.ColorRed)
+			preColor = "[red]"
 		}
 
-		n.list.InsertItemWithStyle(-1, line, "", 0, nil, mStyle, tcell.StyleDefault)
-		//n.list.InsertItem(-1, line, "", 0, nil)
+		line = preColor + line + colorReset
+		n.list.InsertItem(-1, line, "", 0, nil)
 	}
 }
 

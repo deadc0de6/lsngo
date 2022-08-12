@@ -60,11 +60,6 @@ ls lg-*
 * `enter`: open file/directory
 * `?`: show help
 
-# tview
-
-This tools uses a modified version of [tview](https://github.com/rivo/tview)
-with [this PR](https://github.com/rivo/tview/pull/745) applied.
-
 # Thank you
 
 If you like lsngo, [buy me a coffee](https://ko-fi.com/deadc0de6).
